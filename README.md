@@ -7,6 +7,12 @@ We try to figure out whether using the social media can help predict the electio
 ## Tweet Hydrator
 Due to the Twitter's ToS, the data published only contains tweet IDs, so we need to hydrator it (aka, get the full tweet information).
 
+Install requirements:
+
+```
+pip install -r requirements.txt
+```
+
 To hydrate, first you need a CSV file with only ID in each row. Then edit the `tweets_fetch.py` to fill information, and run it.
 
 ```
@@ -28,5 +34,4 @@ python tweets_fetch.py -i tweet_id_1.csv -o full_1.csv
 It also supports proxy. Use the `-p` option.
 
 ## Reference
-- Tweet IDs from ()[https://github.com/chrisalbon/election_day_2016_twitter].
--
+- Tweet IDs from https://github.com/chrisalbon/election_day_2016_twitter
