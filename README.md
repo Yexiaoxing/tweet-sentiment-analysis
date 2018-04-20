@@ -45,7 +45,7 @@ In this project, we utilized https://github.com/aalind0/NLP-Sentiment-Analysis-T
   1. Install `sklearn` with `pip install scikit-learn`
   2. Install `nltk` with `pip install nltk`
   3. Open a fresh python interpreter, run
-     ```
+     ```python
      > import nltk
      > nltk.download('stopwords')
      > nltk.download('movie_reviews')

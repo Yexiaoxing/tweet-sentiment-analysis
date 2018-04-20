@@ -104,8 +104,9 @@ ENV/
 .DS_Store
 
 # LaTeX
-.aux
-.fls 
-.fdb_latexmk
-.log
-.synctex.gz
+__latexindent_temp.tex
+report.aux
+report.fdb_latexmk
+report.fls
+report.pdf
+report.synctex.gz
