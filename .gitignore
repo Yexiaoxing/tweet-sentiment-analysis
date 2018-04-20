@@ -102,3 +102,10 @@ ENV/
 
 # macOS cache
 .DS_Store
+
+# LaTeX
+.aux
+.fls 
+.fdb_latexmk
+.log
+.synctex.gz
