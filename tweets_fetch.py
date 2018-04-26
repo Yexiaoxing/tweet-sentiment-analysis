@@ -14,10 +14,6 @@ access_token = ''
 access_secret = ''
 
 
-def _read_csv(input_file):
-    return pd.read_csv(input_file)
-
-
 def retrieve_tweets(tweet_ids: List[str],
                     output_file_name: str,
                     proxy: str = ""):
@@ -90,7 +86,7 @@ def retrieve_tweets(tweet_ids: List[str],
 
 def main(options, args):
     """Initialize the board, solver object and call the solve() function."""
-    df = _read_csv(options.infile)
+    df = pd.read_csv(options.infile)
     retrieve_tweets(df.iloc[:, 0], options.out, proxy=options.proxy)
 
 

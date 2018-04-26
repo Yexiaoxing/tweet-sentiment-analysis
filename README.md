@@ -51,7 +51,7 @@ In this project, we utilized [https://github.com/aalind0/NLP-Sentiment-Analysis-
         ```
 
 2. Run the `train_classifiers.py` file to train models.
-3. Run `sentiment_cal.py` (it will use 1/4 of all your CPU cores to calculate) or `sentiment_cal_single_thread.py` (it will only utilize one core using one thread) to calculate the sentiment. You need to use this syntax: `python xxx.py <index>` and replace the `<index>` with the number of csv file. The filename is hardcoded so you may change it yourself.
+3. Run `sentiment_calculation_multithread.py` (it will use 1/4 of all your CPU cores to calculate) or `sentiment_calculation.py` (it will only utilize one core using one thread) to calculate the sentiment. You need to use this syntax: `python xxx.py <index>` and replace the `<index>` with the number of csv file. The filename is hardcoded so you may change it yourself.
 
 ## Reference
 
