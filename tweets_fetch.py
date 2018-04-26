@@ -93,17 +93,12 @@ def main(options, args):
 if __name__ == '__main__':
     parser = OptionParser(usage="Usage: %prog -i input_file" +
                           " -o output_file -p proxy_address")
-    parser.add_option(
-        "-p",
-        "--proxy",
-        dest="proxy",
-        metavar="str",
-        help="Proxy address",
-        default="")
-    parser.add_option(
-        "-i", "--in", dest="infile", help="Input CSV file", metavar="FILE")
-    parser.add_option(
-        "-o", "--out", dest="out", help="Output CSV file", metavar="FILE")
+    parser.add_option("-p", "--proxy", dest="proxy",
+                      metavar="str", help="Proxy address", default="")
+    parser.add_option("-i", "--in", dest="infile",
+                      help="Input CSV file", metavar="FILE")
+    parser.add_option("-o", "--out", dest="out",
+                      help="Output CSV file", metavar="FILE")
     (options, args) = parser.parse_args()
     if not options.infile:
         parser.error('Input CSV filename not given')
