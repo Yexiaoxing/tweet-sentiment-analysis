@@ -110,3 +110,6 @@ report.fdb_latexmk
 report.fls
 report.pdf
 report.synctex.gz
+
+.vscode/
+.pickle
