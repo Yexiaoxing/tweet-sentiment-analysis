@@ -1,4 +1,5 @@
 import pickle
+from datetime import datetime
 
 bcolors = dict(
     HEADER='\033[95m',
@@ -11,17 +12,20 @@ bcolors = dict(
     UNDERLINE='\033[4m'
 )
 
-def print_messsage(color:str, heading:str, body:str):
-    print("{}[{}]{} {}".format(bcolors[color], heading, bcolors["ENDC"], body))
 
-info = lambda body: print_messsage("OKGREEN", "INFO", body)
-warning = lambda body: print_messsage("WARNING", "WARN", body)
-error = lambda body: print_messsage("FAIL", "ERRO", body)
+def print_messsage(color: str, heading: str, body: str):
+    print("{}[{}]{} ({}) {}".format(bcolors[color], heading,
+                                    bcolors["ENDC"], datetime.now().strftime('%H:%M:%S'), body))
 
 
-def pickling(filename:str, variable:object):
+info = lambda *body: print_messsage("OKGREEN", "INFO", " ".join(body))
+warning = lambda *body: print_messsage("WARNING", "WARN", " ".join(body))
+error = lambda *body: print_messsage("FAIL", "ERRO", " ".join(body))
+
+
+def pickling(filename: str, variable: object):
     """Pickle an variable.
-    
+
     Arguments:
         filename {str} -- Filename to save
         variable {object} -- Variable to pickle
@@ -29,4 +33,3 @@ def pickling(filename:str, variable:object):
 
     with open(filename, "wb") as file:
         pickle.dump(variable, file)
-        
