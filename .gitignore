@@ -112,5 +112,3 @@ report.pdf
 report.synctex.gz
 
 .vscode/
-
-*.pickle

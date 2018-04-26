@@ -118,7 +118,7 @@ if __name__ == '__main__':
     info("This will take much time. Be patient.")
 
     print()
-    info("Current Algorithm: " + "Sklearn Original Naive Bayes")
+    info("Current Algorithm: " + "NLTK Original Naive Bayes")
     nb_classifier = nltk.NaiveBayesClassifier.train(training_set)
     info("Accuracy Percent:", str((nltk.classify.accuracy(
         nb_classifier, testing_set)) * 100))

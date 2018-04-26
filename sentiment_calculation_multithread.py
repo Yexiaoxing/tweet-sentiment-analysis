@@ -1,5 +1,5 @@
 print("Loading datasets... It may take a longer time.")
-import sentiment_mod as senti
+from sentiment import sentiment
 import pickle
 import pandas as pd
 import numpy as np
@@ -7,7 +7,7 @@ from multiprocessing import cpu_count, Pool
 
 
 print("The following result should be neg and 1.0")
-print(senti.sentiment("He is an incapable person. His projects are totally senseless."))
+print(sentiment("He is an incapable person. His projects are totally senseless."))
 
 cores = cpu_count()  # Number of CPU cores on your system
 partitions = cores // 4 or 1  # Define as many partitions as you want
@@ -24,7 +24,7 @@ def parallelize(data, func):
 
 def par_func(cs):
     print("Processing batch of", len(cs.index))
-    cs["sentiment"] = cs["text"].apply(senti.sentiment)
+    cs["sentiment"] = cs["text"].apply(sentiment)
     return cs
 
 

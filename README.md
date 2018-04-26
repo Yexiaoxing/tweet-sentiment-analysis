@@ -50,8 +50,21 @@ In this project, we utilized [https://github.com/aalind0/NLP-Sentiment-Analysis-
         > nltk.download('punkt')
         ```
 
-2. Run the `train_classifiers.py` file to train models.
+2. Run the `train_classifiers.py` file to train models. Or you may use the pretrained models in this repo.
 3. Run `sentiment_calculation_multithread.py` (it will use 1/4 of all your CPU cores to calculate) or `sentiment_calculation.py` (it will only utilize one core using one thread) to calculate the sentiment. You need to use this syntax: `python xxx.py <index>` and replace the `<index>` with the number of csv file. The filename is hardcoded so you may change it yourself.
+
+### Resulting Accuracy
+
+The accuracy varies because we randomly our training sets. But it should be stable at around $[65, 75]$. This is a demo run:
+
+- Original Naive Bayes: 72.9607250755287
+- Sklearn Multinomial Naive Bayes: 70.2416918429003
+- Sklearn Bernoulli Naive Bayes: 72.35649546827794
+- Sklearn Logistic Regression: 70.69486404833837
+- Sklearn Linear SVC: 67.97583081570997
+- Sklearn SGD classifier: 67.06948640483384
+
+Voted Classifier: 71.75226586102718
 
 ## Reference
 
