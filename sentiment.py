@@ -18,8 +18,8 @@ classifiers = {
     "Multinomial Naive Bayes": "data/pickles/multinomial_naive_bayes.pickle",
     "Bernoulli Naive Bayes": "data/pickles/bernoulli_naive_bayes.pickle",
     "Logistic Regression": "data/pickles/logistic_regression.pickle",
-    "LinearSVC": "data/pickles/LinearSVC_classifier5k.pickle",
-    "SGDClassifier": "data/pickles/SGDC_classifier5k.pickle"
+    "LinearSVC": "data/pickles/linear_svc.pickle",
+    "SGDClassifier": "data/pickles/sgd.pickle"
 }
 
 trained_classifiers = []

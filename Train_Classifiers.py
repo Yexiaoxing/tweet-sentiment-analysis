@@ -162,7 +162,7 @@ if __name__ == '__main__':
     SGD_classifier.train(training_set)
     info("Accuracy Percent:", str(
         (nltk.classify.accuracy(SGD_classifier, testing_set)) * 100))
-    pickling("data/pickles/linear_svc.pickle", SGD_classifier)
+    pickling("data/pickles/sgd.pickle", SGD_classifier)
 
     print()
     # Voting classifier.
