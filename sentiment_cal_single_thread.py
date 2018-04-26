@@ -1,5 +1,5 @@
 print("Loading datasets... It may take a longer time.")
-import sentiment_mod as senti
+import sentiment,sentiment_mod as senti
 import pickle
 import pandas as pd
 import numpy as np
