@@ -3,21 +3,19 @@
 # Training the classifiers and then pickling.
 # Executing it sucks time. :P
 
-import nltk
-import random
 import pickle
+import random
 from datetime import datetime
 
-from sklearn.naive_bayes import MultinomialNB, BernoulliNB
-from sklearn.linear_model import LogisticRegression, SGDClassifier
-from sklearn.svm import SVC, LinearSVC, NuSVC
-
-from nltk.tokenize import word_tokenize
+import nltk
 from nltk.classify.scikitlearn import SklearnClassifier
+from nltk.tokenize import word_tokenize
+from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.naive_bayes import BernoulliNB, MultinomialNB
+from sklearn.svm import SVC, LinearSVC
 
-from vote_classifier import VoteClassifier
 from utils import info, pickling
-
+from vote_classifier import VoteClassifier
 
 allowed_word_types = ["J", "R", "V"]
 
@@ -149,14 +147,6 @@ if __name__ == '__main__':
     pickling("data/pickles/logistic_regression.pickle", lr_classifier)
 
     print()
-    info("Current Algorithm: " + "Sklearn Linear SVC")
-    linearSVC_classifier = SklearnClassifier(LinearSVC())
-    linearSVC_classifier.train(training_set)
-    info("Accuracy Percent:", str(
-        (nltk.classify.accuracy(linearSVC_classifier, testing_set)) * 100))
-    pickling("data/pickles/linear_svc.pickle", linearSVC_classifier)
-
-    print()
     info("Current Algorithm: " + "Sklearn SGD classifier")
     SGD_classifier = SklearnClassifier(SGDClassifier())
     SGD_classifier.train(training_set)
@@ -165,10 +155,26 @@ if __name__ == '__main__':
     pickling("data/pickles/sgd.pickle", SGD_classifier)
 
     print()
+    info("Current Algorithm: " + "Sklearn Linear SVC")
+    linearSVC_classifier = SklearnClassifier(LinearSVC())
+    linearSVC_classifier.train(training_set)
+    info("Accuracy Percent:", str(
+        (nltk.classify.accuracy(linearSVC_classifier, testing_set)) * 100))
+    pickling("data/pickles/linear_svc.pickle", linearSVC_classifier)
+
+    print()
+    info("Current Algorithm: " + "Sklearn SVC")
+    SVC_classifier = SklearnClassifier(SVC())
+    SVC_classifier.train(training_set)
+    info("Accuracy Percent:", str(
+        (nltk.classify.accuracy(SVC_classifier, testing_set)) * 100))
+    pickling("data/pickles/svc.pickle", SVC_classifier)
+
+    print()
     # Voting classifier.
     info("All classifiers are trained. Evaluating the voted classifier...")
     voted_classifier = VoteClassifier(
-        nb_classifier, mnb_classifier, bnb_classifier, lr_classifier, linearSVC_classifier, SGD_classifier)
+        nb_classifier, mnb_classifier, bnb_classifier, lr_classifier, linearSVC_classifier, SGD_classifier, SVC_classifier)
 
     info("Accuracy percent:",
           str((nltk.classify.accuracy(voted_classifier, testing_set)) * 100))

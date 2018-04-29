@@ -30,7 +30,7 @@
 % Course info
 % ------------------------------------------------------------------------
 \begin{center}
-\textsc{ERG3020 Twitter} \\
+\textsc{ERG3020 Course Project - Twitter} \\
 CUHK-SZ, Apr 22, 2018
 \\[\baselineskip]
 		
@@ -40,41 +40,137 @@ CUHK-SZ, Apr 22, 2018
 \textbf{\underline{Course Project}}
 \end{center}
 	
-\noindent\textbf{Student Name:}  Ye Xiaoxing, Piao Chuxin
+\noindent\textbf{Student Name:}  Piao Chuxin, Ye Xiaoxing
 
-\noindent\textbf{Student ID:}  115010270, 115010058
+\noindent\textbf{Student ID:}  115010058, 115010270
 	
 \noindent\hrulefill
 
+\tableofcontents
 
-\section*{1. Abstract}
+\newpage
 
-      Twitter is a great firehouse of real-time information. Using the data from twitter, people can gain information such as political leaning and other tendencies. Through the classification process of the data before the election day, the more competitive candidate with a higher approval rating can be obtained.
+\section{Abstract}
 
+  Twitter is a great firehouse of real-time information. Using the data from twitter, people can gain information such as political leaning and other tendencies. Through the classification process of the data before the election day, the more competitive candidate with a higher approval rating can be obtained.
 
+\section{Introduction}
 
-\section*{2. Introduction}
+  American President Election is one of the catchiest affairs all over the world. To predict the candidate with higher approval rate beforehand, social networks can be effective in obtaining the political leaning of citizens in the United States. 
 
-     American President Election’ is one of the catchiest affairs all over the world. To predict the candidate with higher approval rate beforehand, social networks can be effective in obtaining the political leaning of citizens in the United States. 
-
-	Twitter is one of the influential social networks that can be used in predicting the political leaning of people who use twitter. Having downloaded the data of one day from the twitter website, the emotion scores have been computed, represented by a number from -1 to 1, in which 1 represents the positive emotion while -1 represents the negative emotions. After obtaining the score of emotion, the keywords which could represent different candidate have been searched. For example, ‘Trump’or‘ Donald’could represent Donald Trump, and ‘Hillary’or‘Clinton’could represent Hillary Clinton. Compared the twitter score which contains different key words to the average emotional score of all the twitter score, the rough political leaning of different candidates can be obtained.
-
-\section*{3. Model}
-\textbf{\large 3.1 }\\
-
-
-
-\vspace{0.4cm}
-\noindent\textbf{\large 3.2 }\\
+  Twitter is one of the influential social networks that can be used in predicting the political leaning of people who use twitter. Having downloaded the data of one day from the twitter website, the emotion scores have been computed, represented by a number from -1 to 1, in which 1 represents the positive emotion while -1 represents the negative emotions. After obtaining the score of emotion, the keywords which could represent different candidate have been searched. For example, ‘Trump’or‘ Donald’ could represent Donald Trump, and ‘Hillary’ or ‘Clinton’could represent Hillary Clinton. Compared the twitter score which contains different key words to the average emotional score of all the twitter score, the rough political leaning of different candidates can be obtained.
+  
+  To tell the political leaning of people, we use sentiment analysis. Sentiment Analysis, sometimes known as opinion mining, is a field of study combining the use of natural language processing, text analysis, and linguistics, to identify and study affective and subjective information. Tipically, it analyses people’s opinions towards entities, such as products, companies, and parties. Thanks to the rapid-developing social media, this area has now been a hot topic with a constant source of textual data.
 
 
 
-\vspace{0.4cm}
-\noindent\textbf{\large 3.3 }\\
+\section{Model}
+
+\subsection{Sentiment Analysis}
+
+  To evaluate the tweets' sentiment, we first trained a series of models. They are...
+
+  \begin{enumerate}
+    \item Naive Bayes
+      \begin{enumerate} 
+        \item Simple Naive Bayes
+        \item Multinomial Naive Bayes
+        \item Bernoulli Naive Bayes
+      \end{enumerate}
+    \item Linear Model
+      \begin{enumerate} 
+        \item Logistic Regression
+        \item Stochastic Gradient Descent
+      \end{enumerate}
+    \item Support Vector Machine
+      \begin{enumerate} 
+        \item Support Vector Classification (deprecated)
+        \item Linear SVC
+      \end{enumerate}
+  \end{enumerate}
+
+  In this part, we would like to introduce the models one by one, and then our implementation.
+
+  \subsubsection{Naive Bayes}
+    Naive Bayes classifier is a simple probabilistic classifier based on Bayes' Theorem, while assuming the independence between features. This technique has been studied for over 60 years, and it is now hot since it is simple but effective. It is still a popular and the baseline method for text classification. With proper pre-processing, ti is evn competitive with advanced methods like SVM.
+    
+    Naive Bayes is a simple technique for constructing classifiers. Class labels are assigned to instances, where the labels is a finite set. It is a family of algorithems based the principle that all assume the independence of feature, given the class variable. Despite the oversimplifiatied assumptions, the Navie Bayes classifiers works well in many real-world cases. And, one of the advantage is that, only a small training set is required, to guess the essential parameters. \cite{wiki:naive_bayes_classifier}
 
 
 
-\section*{4. Conclusion and Findings}
+%     == Probabilistic model ==
 
+% Abstractly, naive Bayes is a [[conditional probability]] model: given a problem instance to be classified, represented by a vector <math>\mathbf{x} = (x_1, \dots, x_n)</math> representing some {{mvar|n}} features (independent variables), it assigns to this instance probabilities
+
+% :<math>p(C_k \mid x_1, \dots, x_n)\,</math>
+
+% for each of {{mvar|K}} possible outcomes or ''classes'' <math>C_k</math>.<ref>{{cite book | last1 = Narasimha Murty | first1 = M. | last2 = Susheela Devi | first2 = V. | title = Pattern Recognition: An Algorithmic Approach | year=2011 | isbn= 0857294946 }}</ref>
+
+% The problem with the above formulation is that if the number of features {{mvar|n}} is large or if a feature can take on a large number of values, then basing such a model on probability tables is infeasible.  We therefore reformulate the model to make it more tractable.  Using [[Bayes' theorem]], the conditional probability can be decomposed as
+
+% :<math>p(C_k \mid \mathbf{x}) = \frac{p(C_k) \ p(\mathbf{x} \mid C_k)}{p(\mathbf{x})} \,</math>
+
+% In plain English, using [[Bayesian probability]] terminology, the above equation can be written as
+% :<math>\mbox{posterior} = \frac{\mbox{prior} \times \mbox{likelihood}}{\mbox{evidence}} \,</math>
+
+% In practice, there is interest only in the numerator of that fraction, because the denominator does not depend on <math>C</math> and the values of the features <math>x_i</math> are given, so that the denominator is effectively constant.
+% The numerator is equivalent to the [[joint probability]] model
+
+% :<math>p(C_k, x_1, \dots, x_n)\,</math>
+
+% which can be rewritten as follows, using the [[Chain rule (probability)|chain rule]] for repeated applications of the definition of [[conditional probability]]:
+
+% :<math>
+% \begin{align}
+% p(C_k, x_1, \dots, x_n) & = p(x_1, \dots, x_n, C_k) \\
+%                         & = p(x_1 \mid x_2, \dots, x_n, C_k) p(x_2, \dots, x_n, C_k) \\
+%                         & = p(x_1 \mid x_2, \dots, x_n, C_k) p(x_2 \mid x_3, \dots, x_n, C_k) p(x_3, \dots, x_n, C_k) \\
+%                         & = \dots \\
+%                         & = p(x_1 \mid x_2, \dots, x_n, C_k) p(x_2 \mid x_3, \dots, x_n, C_k) \dots   p(x_{n-1} \mid x_n, C_k) p(x_n \mid C_k) p(C_k) \\
+% \end{align}
+% </math>
+
+% Now the "naive" [[conditional independence]] assumptions come into play: assume that each feature <math>x_i</math> is conditionally [[statistical independence|independent]] of every other feature <math>x_j</math> for <math>j\neq i</math>, given the category <math>C_k</math>.  This means that
+
+% :<math>p(x_i \mid x_{i+1}, \dots ,x_{n}, C_k ) = p(x_i \mid C_k)\,</math>.
+
+% Thus, the joint model can be expressed as
+
+% :<math>
+% \begin{align}
+% p(C_k \mid x_1, \dots, x_n) & \varpropto p(C_k, x_1, \dots, x_n) = \\
+%                             & = p(C_k) \ p(x_1 \mid C_k) \ p(x_2\mid C_k) \ p(x_3\mid C_k) \ \cdots \\
+%                             & = p(C_k) \prod_{i=1}^n p(x_i \mid C_k)\,.
+% \end{align}
+% </math>
+
+% Where <math>\varpropto</math> denotes [[Proportionality_(mathematics)|proportionality]].
+
+% This means that under the above independence assumptions, the conditional distribution over the class variable <math>C</math> is:
+
+% :<math>p(C_k \mid x_1, \dots, x_n) = \frac{1}{Z} p(C_k) \prod_{i=1}^n p(x_i \mid C_k)</math>
+
+% where the evidence <math>Z = p(\mathbf{x}) = \sum_k p(C_k) \ p(\mathbf{x} \mid C_k)</math> is a scaling factor dependent only on <math>x_1, \dots, x_n</math>, that is, a constant if the values of the feature variables are known.
+
+% === Constructing a classifier from the probability model ===
+
+% The discussion so far has derived the independent feature model, that is, the naive Bayes [[probability model]].  The naive Bayes [[Statistical classification|classifier]] combines this model with a [[decision rule]].  One common rule is to pick the hypothesis that is most probable; this is known as the ''[[maximum a posteriori]]'' or ''MAP'' decision rule.  The corresponding classifier, a [[Bayes classifier]], is the function that assigns a class label <math>\hat{y} = C_k</math> for some {{mvar|k}} as follows:
+
+% :<math>\hat{y} = \underset{k \in \{1, \dots, K\}}{\operatorname{argmax}} \ p(C_k) \displaystyle\prod_{i=1}^n p(x_i \mid C_k).</math>
+
+
+
+  \subsubsection{Linear Model}
+
+  \subsubsection{Support Vector Machine}
+    The second bullet point is easily explained by the fact that, under the hood, scikit-learn relies on different C libraries. In particular SVC() is implemented using libSVM, while LinearSVC() is implemented using liblinear, which is explicitly designed for this kind of application.
+
+
+
+\section{Conclusion and Findings}
+
+
+\bibliographystyle{unsrt}
+\bibliography{cite}
 
 \end{document}

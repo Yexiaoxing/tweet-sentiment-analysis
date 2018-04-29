@@ -8,7 +8,7 @@ from nltk.classify.scikitlearn import SklearnClassifier
 from nltk.tokenize import word_tokenize
 from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.naive_bayes import BernoulliNB, MultinomialNB
-from sklearn.svm import SVC, LinearSVC, NuSVC
+from sklearn.svm import SVC, LinearSVC
 
 from vote_classifier import VoteClassifier
 
@@ -19,6 +19,7 @@ classifiers = {
     "Bernoulli Naive Bayes": "data/pickles/bernoulli_naive_bayes.pickle",
     "Logistic Regression": "data/pickles/logistic_regression.pickle",
     "LinearSVC": "data/pickles/linear_svc.pickle",
+    "SVC": "data/pickles/svc.pickle",
     "SGDClassifier": "data/pickles/sgd.pickle"
 }
 

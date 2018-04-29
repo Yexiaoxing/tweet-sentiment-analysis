@@ -104,11 +104,10 @@ ENV/
 .DS_Store
 
 # LaTeX
-__latexindent_temp.tex
-report.aux
-report.fdb_latexmk
-report.fls
-report.pdf
-report.synctex.gz
+report/
+!report/project_report.tex
+!report/cite.bib
+!report/project_report.pdf
 
 .vscode/
+
