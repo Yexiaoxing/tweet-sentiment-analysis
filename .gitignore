@@ -108,6 +108,7 @@ report/
 !/report/project_report.tex
 !/report/cite.bib
 !/report/project_report.pdf
+!report/*.png
 
 .vscode/
 
